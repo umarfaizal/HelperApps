@@ -1,0 +1,343 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 2.5em;
+}
+
+.settings-header {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.toggle-btn {
+    flex: 1;
+    min-width: 200px;
+    padding: 15px 20px;
+    background: #fff;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.toggle-btn:hover {
+    background: #f9f9f9;
+    border-color: #4CAF50;
+}
+
+.toggle-btn .arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    font-size: 1.2em;
+}
+
+.toggle-btn.collapsed .arrow {
+    transform: rotate(-90deg);
+}
+
+.settings-panel {
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-start;
+    justify-content: center;
+    max-height: 1000px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.settings-panel.collapsed {
+    max-height: 0;
+    padding: 0 25px;
+    opacity: 0;
+}
+
+.time-input-block {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+    flex: 1;
+    min-width: 250px;
+}
+
+.time-input-block h3 {
+    margin: 0 0 15px 0;
+    color: #333;
+    font-size: 1.1em;
+    text-align: center;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: text;
+    transition: all 0.3s;
+}
+
+.time-input-block h3:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border: 2px dashed #999;
+}
+
+.time-input-block h3:focus {
+    outline: none;
+    background: rgba(0, 0, 0, 0.1);
+    border: 2px solid #4CAF50;
+}
+
+.time-inputs {
+    display: flex;
+    gap: 12px;
+    justify-content: space-around;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-weight: 600;
+    color: #555;
+    font-size: 0.95em;
+}
+
+.input-group input {
+    padding: 10px 12px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    width: 120px;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+.btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background: #4CAF50;
+    color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: #45a049;
+    transform: scale(1.05);
+}
+
+.btn-primary:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.btn-warning {
+    background: #ff9800;
+    color: white;
+}
+
+.btn-warning:hover:not(:disabled) {
+    background: #e68900;
+    transform: scale(1.05);
+}
+
+.btn-warning:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.btn-secondary {
+    background: #2196F3;
+    color: white;
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background: #0b7dda;
+    transform: scale(1.05);
+}
+
+.btn-secondary:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.timers-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.timer-card {
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    transition: all 0.5s ease;
+}
+
+.timer-card.work {
+    background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+    border: 3px solid #e0e0e0;
+}
+
+.timer-card.break {
+    background: linear-gradient(135deg, #fff9e6 0%, #ffeb99 100%);
+    border: 3px solid #ffc107;
+}
+
+.timer-card.active {
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+.timer-label {
+    font-size: 1.3em;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: text;
+    transition: all 0.3s;
+}
+
+.timer-label:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border: 2px dashed #999;
+}
+
+.timer-label:focus {
+    outline: none;
+    background: rgba(0, 0, 0, 0.1);
+    border: 2px solid #4CAF50;
+}
+
+.timer-display {
+    font-size: 5em;
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+    margin: 20px 0;
+    color: #333;
+    letter-spacing: 2px;
+}
+
+.timer-status {
+    font-size: 1.1em;
+    color: #888;
+    margin-top: 10px;
+    min-height: 24px;
+    font-weight: 500;
+}
+
+.timer-status.active {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .timers-container {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .timer-display {
+        font-size: 3.5em;
+    }
+
+    .settings-header {
+        flex-direction: column;
+    }
+
+    .toggle-btn {
+        min-width: 100%;
+    }
+
+    .settings-panel {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .time-input-block {
+        min-width: 100%;
+    }
+
+    .time-inputs {
+        flex-direction: column;
+    }
+
+    .input-group input {
+        width: 100%;
+    }
+
+    .button-group {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}

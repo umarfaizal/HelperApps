@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Dual Pomodoro Timer</h1>
+        
+        <div class="settings-header">
+            <button id="toggleConfigBtn" class="toggle-btn">
+                <span class="arrow">▼</span>
+                Configuration
+            </button>
+            <div class="button-group">
+                <button id="startBtn" class="btn btn-primary">Start</button>
+                <button id="pauseBtn" class="btn btn-warning" disabled>Pause</button>
+                <button id="restartBtn" class="btn btn-secondary" disabled>Restart</button>
+            </div>
+        </div>
+        
+        <div id="settingsPanel" class="settings-panel expanded">
+            <div class="time-input-block">
+                <h3 id="workConfigLabel" contenteditable="true">Work / System</h3>
+                <div class="time-inputs">
+                    <div class="input-group">
+                        <label for="workHours">Hours</label>
+                        <input type="number" id="workHours" value="0" min="0" max="23">
+                    </div>
+                    <div class="input-group">
+                        <label for="workMinutes">Minutes</label>
+                        <input type="number" id="workMinutes" value="5" min="0" max="59">
+                    </div>
+                    <div class="input-group">
+                        <label for="workSeconds">Seconds</label>
+                        <input type="number" id="workSeconds" value="5" min="0" max="59">
+                    </div>
+                </div>
+            </div>
+
+            <div class="time-input-block">
+                <h3 id="breakConfigLabel" contenteditable="true">Workout</h3>
+                <div class="time-inputs">
+                    <div class="input-group">
+                        <label for="breakHours">Hours</label>
+                        <input type="number" id="breakHours" value="0" min="0" max="23">
+                    </div>
+                    <div class="input-group">
+                        <label for="breakMinutes">Minutes</label>
+                        <input type="number" id="breakMinutes" value="3" min="0" max="59">
+                    </div>
+                    <div class="input-group">
+                        <label for="breakSeconds">Seconds</label>
+                        <input type="number" id="breakSeconds" value="5" min="0" max="59">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timers-container">
+            <!-- Work Timer (White) -->
+            <div id="workTimer" class="timer-card work">
+                <div class="timer-label" id="workLabel" contenteditable="true">Work / System</div>
+                <div class="timer-display" id="workDisplay">00:25</div>
+                <div class="timer-status" id="workStatus"></div>
+            </div>
+
+            <!-- Workout Timer (Yellow) -->
+            <div id="breakTimer" class="timer-card break">
+                <div class="timer-label" id="breakLabel" contenteditable="true">Workout</div>
+                <div class="timer-display" id="breakDisplay">00:05</div>
+                <div class="timer-status" id="breakStatus"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
